@@ -1,0 +1,79 @@
+# [CLSFD_MSG](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG)
+
+**数据库**：CLFSD_ACCESS_VIEWS
+
+**字段**
+
+- CLSFD_MSG_ID
+  - 为 CLSFD_GMT_MSG 表中的每条记录生成的唯一标识符
+  - 系统自动生成
+- SRC_MSG_ID
+  - 源表中每条记录的唯一标识符
+  - 从源表复制
+- ==CLSFD_CNVRSTN_ID==
+  - ==每个对话的唯一标识符==
+  - ==一个对话包含多个 MSG==
+- CLSFD_SITE_ID
+  - 每个分类站点的唯一标识符
+  - 在[DataWarehouse/Classifieds/DW_CLSFD_SITES 中引用](https://ecgwiki.corp.ebay.com/display/DW/DW_CLSFD_SITES)
+- CLSFD_CATEG_REF_ID
+  - ==所发布广告的网站类别的唯一标识符==
+  - ==仅适用于 Gumtree 英国/澳大利亚。==
+  - 在[DataWarehouse/Classifieds/DW_CLSFD_CATEG_REF_LKP 中引用](https://ecgwiki.corp.ebay.com/display/DW/DW_CLSFD_CATEG_REF_LKP)
+- CLSFD_PROXY_ID
+  - API 合作伙伴的每个 API 客户端的唯一标识符。
+  - 5v。
+- MSG_PSTN
+  - 对话期间的消息位置。通常 MSG_PSTN = 0，表示整个会话的第一条消息。
+- CLSFD_MSG_SRC_ID
+  - 在[CLSFD_MSG_SRC_LKP](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG_SRC_LKP)中 [引用](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG_SRC_LKP)
+  - ==对于 MP，它存储消息类型，例如电子邮件、投标、聊天等。==
+- MSG_DRCTN
+  - ==方向讯息==
+  - ==B2S==
+  - ==S2B==
+- SENDER_IP_ADDR
+- MSG_STATUS_ID
+  - 在[DataWarehouse/Classifieds/CLSFD_MSG_STATUS_LKP 中引用](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG_STATUS_LKP)
+  - 1 被封锁
+  - 2 创建
+  - 3 可过滤
+  - 4 放弃
+  - 5 举行
+  - 6 忽略
+  - 7 孤儿
+  - 8 已发送
+  - 9 删除
+  - 10 好
+  - 11 TIMED_OUT
+  - 12 未勾选
+  - 13 可发送
+  - 14 无法解析
+- FLTR_RSLT_STATUS_ID
+  - Gumtree UK/AU 的过滤结果状态 ID
+  - 不用于 CA
+  - 在[CLSFD_MSG_STATUS_LKP](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG_STATUS_LKP)中[引用](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG_STATUS_LKP)
+- HUMAN_RSLT_STATUS_ID
+  - Gumtree UK/AU 的人工结果状态 ID；CA 的 CS 代理审查结果。
+  - 在[CLSFD_MSG_STATUS_LKP](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG_STATUS_LKP)中[引用](https://ecgwiki.corp.ebay.com/display/DW/CLSFD_MSG_STATUS_LKP)
+- ==RETRY_CNT==
+- SRC_CRE_DT
+- SRC_CRE_TM
+- SRC_LAST_UPD_DT
+- SRC_LAST_UPD_TM
+- MSG_SENT_DT          
+- MSG_SENT_TM        
+  - 只适用于加拿大。发送一条消息的日期和时间。
+  - 如果它被延迟或被丢弃，则可能为空。
+- MSG_APPRV_DT          
+- MSG_APPRV_TM          
+  - 只适用于加拿大。CS 代理手动批准消息的日期
+- MSG_REJECT_DT         
+- MSG_REJECT_TM         
+  - 只适用于加拿大。CS 代理手动拒绝（丢弃）消息的日期。
+- 附件_IND         
+  - 只适用于加拿大。1 当邮件包含附件时。0 否则。
+- BLOCKED_EMAIL_IND       
+  - 只适用于加拿大。1 如果邮件由于域/电子邮件过滤器匹配而被丢弃并且最终分数高于 DROP 阈值
+- BLOCKED_USER_IND     
+  - 只适用于加拿大。1 如果由于用户或 IP 在 Le Grid 中被阻止而丢弃消息。   
